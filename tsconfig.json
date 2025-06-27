@@ -13,9 +13,9 @@
     "paths": {
       "@server/*": ["./server/src/*"],
       "@client/*": ["./client/src/*"],
-      "@shared/*": ["./shared/src/*"]
+      "@map/*": ["./packages/map-library/src/*"],
     },
-
+    
     // Module resolution
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
