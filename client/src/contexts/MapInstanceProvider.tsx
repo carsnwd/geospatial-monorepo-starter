@@ -1,4 +1,5 @@
-import React, {
+import type React from "react";
+import {
   createContext,
   useContext,
   useEffect,
@@ -48,7 +49,7 @@ export const MapInstanceProvider: React.FC<MapInstanceProvider> = ({
         setMapInstance(null);
       };
     }
-  }, [mapContainerRef]);
+  }, []);
 
   const contextValue = useMemo(() => ({ mapInstance }), [mapInstance]);
 

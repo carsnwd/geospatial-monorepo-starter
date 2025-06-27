@@ -20,7 +20,7 @@ describe("LayersManager", () => {
       const layer = { id: "layer1", name: "Test Layer" };
       manager.addLayer(layer);
       expect(() => manager.addLayer(layer)).toThrow(
-        "Layer with this ID already exists"
+        "Layer with this ID already exists",
       );
     });
   });
