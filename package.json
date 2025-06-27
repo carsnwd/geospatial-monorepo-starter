@@ -14,7 +14,20 @@
     "dev": "concurrently \"bun run dev:map-library\" \"bun run dev:client\"",
     "build:client": "cd client && bun run build",
     "build:map-library": "cd packages/map-library && bun run build",
-    "build": "bun run build:map-library && bun run build:client"
+    "build": "bun run build:map-library && bun run build:client",
+    "lint:ui": "cd packages/ui && bun run lint",
+    "lint:map-library": "cd packages/map-library && bun run lint",
+    "lint:client": "cd client && bun run lint",
+    "lint": "bun run lint:ui && bun run lint:map-library && bun run lint:client",
+    "format:ui": "cd packages/ui && bun run format",
+    "format:map-library": "cd packages/map-library && bun run format",
+    "format:client": "cd client && bun run format",
+    "format": "bun run format:ui && bun run format:map-library && bun run format:client",
+    "test:ui": "cd packages/ui && bun run test",
+    "test:map-library": "cd packages/map-library && bun run test",
+    "test:client": "cd client && bun run test",
+    "test": "bun run test:ui && bun run test:map-library && bun run test:client"
+    
   },
   "keywords": [
     "geospatial",
