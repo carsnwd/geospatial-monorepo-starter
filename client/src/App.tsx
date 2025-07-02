@@ -1,7 +1,7 @@
 // import { hcWithType } from 'server/dist/client'
 
 import { MapInstanceProvider } from "./contexts/MapInstanceProvider";
-import { GMSButton } from "ui";
+import { GMSButton, IconLayers } from "ui";
 
 // const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3000"
 
@@ -29,7 +29,12 @@ function App() {
   return (
     <div className="max-w-xl mx-auto flex flex-col gap-6 items-center justify-center min-h-screen">
       <MapInstanceProvider>
-        <GMSButton label="Test" size="large" mode="secondary" />
+        <GMSButton
+          label="Test"
+          size="medium"
+          mode="secondary"
+          icon={IconLayers}
+        />
       </MapInstanceProvider>
     </div>
   );
