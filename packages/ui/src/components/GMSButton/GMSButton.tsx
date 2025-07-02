@@ -59,7 +59,7 @@ export const GMSButton = ({ mode, size, label, ...props }: ButtonProps) => {
   return (
     <button
       type="button"
-      className={["btn", btnSize, btnMode, "text-red-900"].join(" ")}
+      className={["btn", btnSize, btnMode].join(" ")}
       {...props}
     >
       {label}

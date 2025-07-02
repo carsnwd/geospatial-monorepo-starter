@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 @plugin "daisyui" {
-    themes: forest --default;
+    themes: forest;
 }
 @plugin "daisyui/theme" {
     name: "forest";
