@@ -1,6 +1,8 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
 @plugin "daisyui" {
-    themes: forest;
+    themes: forest --default;
 }
 @plugin "daisyui/theme" {
     name: "forest";
@@ -8,5 +10,4 @@
     --radius-selector: 0.25rem;
     --radius-field: 0.25rem;
     --radius-box: 0.25rem;
-    --color-success: yellow;
   }

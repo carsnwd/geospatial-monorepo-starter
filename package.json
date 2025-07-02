@@ -14,6 +14,7 @@
     "dev": "concurrently \"bun run dev:map-library\" \"bun run dev:client\"",
     "build:client": "cd client && bun run build",
     "build:map-library": "cd packages/map-library && bun run build",
+    "build:ui": "cd packages/ui && bun run build",
     "build": "bun run build:map-library && bun run build:client",
     "lint:ui": "cd packages/ui && bun run lint",
     "lint:map-library": "cd packages/map-library && bun run lint",

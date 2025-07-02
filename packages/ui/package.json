@@ -1,16 +1,42 @@
 {
   "name": "ui",
-  "module": "index.ts",
-  "type": "module",
-  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@biomejs/biome": "^2.0.6",
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/bun": "latest",
+    "@types/react": "^19.1.8",
+    "@vitejs/plugin-react": "^4.6.0",
+    "autoprefixer": "^10.4.21",
+    "bun-plugin-tailwind": "^0.0.15",
+    "daisyui": "^5.0.43",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.11",
+    "vite": "^7.0.0"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.8.3",
+    "react": "^19.1.0"
   },
-  "dependencies": {
-    "bun-plugin-tailwind": "^0.0.15",
-    "daisyui": "^5.0.43"
-  }
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    },
+    "./components/*": "./src/components/*.tsx",
+    "./styles/*": "./dist/ui.css"
+  },
+  "files": [
+    "dist/**"
+  ],
+  "private": true,
+  "scripts": {
+    "lint": "biome lint ./src",
+    "test": "bun run test",
+    "format": "biome format ./src",
+    "build": "tsc && vite build --config vite.config.ts"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts"
 }
