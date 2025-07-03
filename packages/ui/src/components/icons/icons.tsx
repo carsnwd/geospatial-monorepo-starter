@@ -1,9 +1,11 @@
 import type { JSX } from "react";
 
-export type IconInterface = (size: "small" | "medium" | "large") => JSX.Element;
+export type IconInterface = (
+  iconSize: "small" | "medium" | "large",
+) => JSX.Element;
 
-const getIconSizeClassName = (size: "small" | "medium" | "large") => {
-  switch (size) {
+const getIconSizeClassName = (iconSize: "small" | "medium" | "large") => {
+  switch (iconSize) {
     case "small":
       return "w-3 h-3";
     case "medium":
@@ -14,7 +16,7 @@ const getIconSizeClassName = (size: "small" | "medium" | "large") => {
       return "w-4 h-4"; // Default to medium size
   }
 };
-export const IconLayers = (size: "small" | "medium" | "large") => {
+export const IconLayers = (iconSize: "small" | "medium" | "large") => {
   return (
     <svg
       version="1.1"
@@ -22,8 +24,8 @@ export const IconLayers = (size: "small" | "medium" | "large") => {
       x="0px"
       y="0px"
       viewBox="0 0 16 16"
-      enable-background="new 0 0 16 16"
-      className={getIconSizeClassName(size)}
+      fill="currentColor"
+      className={getIconSizeClassName(iconSize)}
     >
       <title>Layers</title>
       <g>
