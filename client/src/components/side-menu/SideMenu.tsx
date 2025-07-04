@@ -16,13 +16,14 @@ export default function SideMenu() {
   const iconLayers = IconLayers({ iconSize: "medium" });
   const iconDraw = IconDraw({ iconSize: "medium" });
   const iconGeofence = IconGeofence({ iconSize: "medium" });
-  const panelHeight = isOpen ? "h-11/12" : "h-[2.5rem]";
+  const panelHeight = isOpen ? "h-[90vh]" : "h-[2.5rem]";
 
   return (
     <div className="absolute top-0 left-0 m-5">
       <div className="flex flex-row">
         <div
           className={`w-lg bg-base-200 shadow-lg z-10 overflow-hidden ${panelHeight}`}
+          style={{ transition: "height 0.25s ease-in-out" }}
         >
           <div className="tabs tabs-lift">
             <SideMenuTab
