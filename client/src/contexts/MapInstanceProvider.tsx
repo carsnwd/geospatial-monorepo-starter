@@ -27,7 +27,9 @@ interface MapInstanceProvider extends Omit<MapInstanceOptions, "container"> {
   children?: React.ReactNode;
 }
 
-export const MapInstanceProvider: React.FC<MapInstanceProvider> = () => {
+export const MapInstanceProvider: React.FC<MapInstanceProvider> = ({
+  children,
+}) => {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [mapInstance, setMapInstance] = useState<MapInstance | null>(null);
 
@@ -59,10 +61,7 @@ export const MapInstanceProvider: React.FC<MapInstanceProvider> = () => {
           className="absolute inset-0"
           style={{ width: "100%", height: "100%" }}
         />
-        <div className="absolute top-0 left-0 w-lg h-full bg-base-200 shadow-lg z-10">
-          <h2 className="p-4 text-lg font-bold">Side Panel</h2>
-          <p className="p-4">This is the side panel content.</p>
-        </div>
+        {children}
       </div>
     </MapContext.Provider>
   );

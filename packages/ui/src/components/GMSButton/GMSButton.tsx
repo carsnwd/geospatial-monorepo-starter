@@ -1,11 +1,12 @@
 import type { IconInterface } from "../icons/icons";
 
 export interface ButtonProps {
-  label: string;
+  label?: string;
   mode?: GMSButtonMode;
   size?: GMSButtonSize;
   onClick?: () => void;
   icon?: IconInterface;
+  styles?: string;
 }
 
 type GMSButtonMode =
@@ -61,6 +62,7 @@ export const GMSButton = ({
   size,
   label,
   icon,
+  styles,
   ...props
 }: ButtonProps) => {
   const btnMode = getDaisyUIBtnStyle(mode ?? "neutral");
@@ -68,10 +70,10 @@ export const GMSButton = ({
   return (
     <button
       type="button"
-      className={["btn", btnSize, btnMode].join(" ")}
+      className={["btn", btnSize, btnMode, styles].join(" ")}
       {...props}
     >
-      {icon ? icon(size ?? "medium") : null}
+      {icon ? icon({ iconSize: size ?? "medium" }) : null}
       {label}
     </button>
   );
