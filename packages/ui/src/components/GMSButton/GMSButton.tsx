@@ -7,6 +7,7 @@ export interface ButtonProps {
   onClick?: () => void;
   icon?: IconInterface;
   styles?: string;
+  disabled?: boolean;
 }
 
 type GMSButtonMode =
@@ -63,14 +64,16 @@ export const GMSButton = ({
   label,
   icon,
   styles,
+  disabled = false,
   ...props
 }: ButtonProps) => {
   const btnMode = getDaisyUIBtnStyle(mode ?? "neutral");
   const btnSize = getDaisyUISize(size ?? "medium");
+  const btnDisabled = disabled ? "btn-disabled" : "";
   return (
     <button
       type="button"
-      className={["btn", btnSize, btnMode, styles].join(" ")}
+      className={["btn", btnSize, btnMode, btnDisabled, styles].join(" ")}
       {...props}
     >
       {icon ? icon({ iconSize: size ?? "medium" }) : null}
