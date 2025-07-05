@@ -33,7 +33,7 @@ export default function SideMenu() {
               sideMenuTabId="layers"
             >
               <div className="w-full flex items-center">
-                <GMSSearchBar />
+                <GMSSearchBar placeholder="Search map layers..." />
               </div>
             </SideMenuTab>
 
