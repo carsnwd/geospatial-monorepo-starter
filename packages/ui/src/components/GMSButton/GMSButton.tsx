@@ -55,7 +55,7 @@ function getDaisyUIBtnColor(color: GMSButtonColor): string {
     case "error":
       return "btn-error";
     default:
-      return "btn-neutral"; // Default to neutral if mode is not recognized
+      return "";
   }
 }
 
@@ -80,7 +80,7 @@ function getDaisyUIBtnStyle(style: GMSButtonStyle): string {
 
 /** Primary UI component for user interaction */
 export const GMSButton = ({
-  color: mode,
+  color,
   size,
   label,
   icon,
@@ -89,7 +89,7 @@ export const GMSButton = ({
   disabled = false,
   ...props
 }: ButtonProps) => {
-  const btnMode = getDaisyUIBtnColor(mode ?? "neutral");
+  const btnColor = color ? getDaisyUIBtnColor(color) : "";
   const btnSize = getDaisyUISize(size ?? "medium");
   const btnStyle = getDaisyUIBtnStyle(style ?? "solid");
   const btnDisabled = disabled ? "btn-disabled" : "";
@@ -99,7 +99,7 @@ export const GMSButton = ({
       className={[
         "btn",
         btnSize,
-        btnMode,
+        btnColor,
         btnDisabled,
         btnStyle,
         cssStyles,

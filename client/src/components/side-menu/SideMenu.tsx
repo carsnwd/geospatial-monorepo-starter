@@ -23,10 +23,10 @@ export default function SideMenu() {
     <div className="absolute top-0 left-0 m-5">
       <div className="flex flex-row">
         <div
-          className={`flex flex-grow w-lg bg-base-200 shadow-lg z-10 overflow-hidden rounded ${panelHeight}`}
+          className={`flex flex-grow w-xl bg-base-200 shadow-lg z-10 overflow-hidden rounded ${panelHeight}`}
           style={{ transition: "height 0.25s ease-in-out" }}
         >
-          <div className="flex flex-grow w-full tabs tabs-border">
+          <div className="flex flex-grow w-lg tabs tabs-border">
             <SideMenuTab
               sideMenuIcon={iconLayers}
               sideMenuTabTitle="Layers"
@@ -52,7 +52,7 @@ export default function SideMenu() {
             </SideMenuTab>
             <GMSButton
               cssStyles="ml-auto"
-              color="primary"
+              color="secondary"
               onClick={toggleMenu}
               disabled={activeTab === null}
               icon={isOpen ? IconDoubleChevronUp : IconDoubleChevronDown}
