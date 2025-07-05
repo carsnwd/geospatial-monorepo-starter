@@ -39,8 +39,7 @@ export const MapInstanceProvider: React.FC<MapInstanceProvider> = ({
         container: mapContainerRef.current,
         center: [-76.6122, 39.2904],
         zoom: 10,
-        style:
-          "https://api.maptiler.com/maps/streets-v2/style.json?key=k23TlwjGXfhsNOcktPLI",
+        style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${import.meta.env.VITE_MAP_TILER_KEY}`,
       });
       setMapInstance(instance);
 

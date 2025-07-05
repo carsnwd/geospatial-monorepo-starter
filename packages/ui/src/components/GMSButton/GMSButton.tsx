@@ -2,15 +2,16 @@ import type { IconInterface } from "../icons/icons";
 
 export interface ButtonProps {
   label?: string;
-  mode?: GMSButtonMode;
+  color?: GMSButtonColor;
   size?: GMSButtonSize;
+  style?: GMSButtonStyle;
   onClick?: () => void;
   icon?: IconInterface;
-  styles?: string;
+  cssStyles?: string;
   disabled?: boolean;
 }
 
-type GMSButtonMode =
+type GMSButtonColor =
   | "primary"
   | "secondary"
   | "accent"
@@ -20,6 +21,7 @@ type GMSButtonMode =
   | "warning"
   | "error";
 type GMSButtonSize = "small" | "medium" | "large";
+type GMSButtonStyle = "solid" | "soft" | "outline" | "dash" | "ghost" | "link";
 
 function getDaisyUISize(size: GMSButtonSize): string {
   switch (size) {
@@ -34,8 +36,8 @@ function getDaisyUISize(size: GMSButtonSize): string {
   }
 }
 
-function getDaisyUIBtnStyle(mode: GMSButtonMode): string {
-  switch (mode) {
+function getDaisyUIBtnColor(color: GMSButtonColor): string {
+  switch (color) {
     case "primary":
       return "btn-primary";
     case "secondary":
@@ -57,23 +59,51 @@ function getDaisyUIBtnStyle(mode: GMSButtonMode): string {
   }
 }
 
+function getDaisyUIBtnStyle(style: GMSButtonStyle): string {
+  switch (style) {
+    case "solid":
+      return "btn-solid";
+    case "soft":
+      return "btn-soft";
+    case "outline":
+      return "btn-outline";
+    case "dash":
+      return "btn-dash";
+    case "ghost":
+      return "btn-ghost";
+    case "link":
+      return "btn-link";
+    default:
+      return "btn-solid"; // Default to solid if style is not recognized
+  }
+}
+
 /** Primary UI component for user interaction */
 export const GMSButton = ({
-  mode,
+  color: mode,
   size,
   label,
   icon,
-  styles,
+  style,
+  cssStyles,
   disabled = false,
   ...props
 }: ButtonProps) => {
-  const btnMode = getDaisyUIBtnStyle(mode ?? "neutral");
+  const btnMode = getDaisyUIBtnColor(mode ?? "neutral");
   const btnSize = getDaisyUISize(size ?? "medium");
+  const btnStyle = getDaisyUIBtnStyle(style ?? "solid");
   const btnDisabled = disabled ? "btn-disabled" : "";
   return (
     <button
       type="button"
-      className={["btn", btnSize, btnMode, btnDisabled, styles].join(" ")}
+      className={[
+        "btn",
+        btnSize,
+        btnMode,
+        btnDisabled,
+        btnStyle,
+        cssStyles,
+      ].join(" ")}
       {...props}
     >
       {icon ? icon({ iconSize: size ?? "medium" }) : null}

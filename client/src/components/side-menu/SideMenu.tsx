@@ -1,21 +1,21 @@
 import {
   GMSButton,
-  IconDataSource,
   IconDoubleChevronDown,
   IconDoubleChevronUp,
   IconLayers,
+  IconSettings,
   IconTool,
 } from "ui";
-import { GMSSearchBar } from "ui";
 import { useSideMenuToggle } from "./helpers/contexts/SideMenuToggleContext";
 import SideMenuTab from "./helpers/SideMenuTab";
 import { useActiveTab } from "./helpers/contexts/ActiveSideMenuTabContext";
+import MapLayersMenu from "../map-layers-menu/MapLayersMenu";
 
 export default function SideMenu() {
   const { isOpen, toggleMenu } = useSideMenuToggle();
   const { activeTab } = useActiveTab();
   const iconLayers = IconLayers({ iconSize: "medium" });
-  const iconDataSource = IconDataSource({ iconSize: "medium" });
+  const iconSettings = IconSettings({ iconSize: "medium" });
   const iconTool = IconTool({ iconSize: "medium" });
   const panelHeight = isOpen ? "h-[90vh]" : "h-[2.5rem]";
 
@@ -29,32 +29,30 @@ export default function SideMenu() {
           <div className="flex flex-grow w-full tabs tabs-border">
             <SideMenuTab
               sideMenuIcon={iconLayers}
-              sideMenuTabTitle="Map Layers"
+              sideMenuTabTitle="Layers"
               sideMenuTabId="layers"
             >
-              <div className="w-full flex items-center">
-                <GMSSearchBar placeholder="Search map layers..." />
-              </div>
+              <MapLayersMenu />
             </SideMenuTab>
 
             <SideMenuTab
-              sideMenuIcon={iconDataSource}
-              sideMenuTabTitle="Data Sources"
-              sideMenuTabId="draw"
+              sideMenuIcon={iconSettings}
+              sideMenuTabTitle="Settings"
+              sideMenuTabId="settings"
             >
-              Data Source
+              Settings
             </SideMenuTab>
 
             <SideMenuTab
               sideMenuIcon={iconTool}
-              sideMenuTabTitle="Map Tools"
-              sideMenuTabId="geofence"
+              sideMenuTabTitle="Tools"
+              sideMenuTabId="tools"
             >
               Tools Content
             </SideMenuTab>
             <GMSButton
-              styles="ml-auto"
-              mode="primary"
+              cssStyles="ml-auto"
+              color="primary"
               onClick={toggleMenu}
               disabled={activeTab === null}
               icon={isOpen ? IconDoubleChevronUp : IconDoubleChevronDown}
