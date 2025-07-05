@@ -39,9 +39,6 @@ export default function SideMenuTab({
       </label>
       {activeTab === sideMenuTabId && (
         <div className="tab-content">
-          <div className="bg-base-100 p-6 border-base-300">
-            {sideMenuTabTitle}
-          </div>
           <div className="p-6">{children}</div>
         </div>
       )}

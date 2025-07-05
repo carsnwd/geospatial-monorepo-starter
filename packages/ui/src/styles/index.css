@@ -1,11 +1,10 @@
 @import "tailwindcss";
-@plugin "daisyui";
 
 @plugin "daisyui" {
-    themes: forest;
+    themes: ["business"];
 }
 @plugin "daisyui/theme" {
-    name: "forest";
+    name: "business";
     default: true;
     --radius-selector: 0.25rem;
     --radius-field: 0.25rem;

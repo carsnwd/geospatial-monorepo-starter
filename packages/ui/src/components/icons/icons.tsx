@@ -137,3 +137,78 @@ export const IconDoubleChevronUp = ({ iconSize, styles }: IconProps) => {
     </svg>
   );
 };
+
+export const IconSearch = ({ iconSize, styles }: IconProps) => {
+  return (
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      className={[getIconSizeClassName(iconSize), styles].join(" ")}
+    >
+      <title>Search</title>
+      <g>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M15.55,13.43l-2.67-2.68c0.7-1.09,1.11-2.38,1.11-3.76c0-3.87-3.13-7-7-7
+			s-7,3.13-7,7s3.13,7,7,7c1.39,0,2.68-0.42,3.76-1.11l2.68,2.67c0.27,0.27,0.65,0.44,1.06,0.44c0.83,0,1.5-0.67,1.5-1.5
+			C15.99,14.08,15.82,13.7,15.55,13.43z M6.99,11.99c-2.76,0-5-2.24-5-5s2.24-5,5-5s5,2.24,5,5S9.75,11.99,6.99,11.99z"
+        />
+      </g>
+    </svg>
+  );
+};
+
+export const IconDataSource = ({ iconSize, styles }: IconProps) => {
+  return (
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      className={[getIconSizeClassName(iconSize), styles].join(" ")}
+    >
+      <title>Data Source</title>
+      <g>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8,4c3.31,0,6-0.9,6-2c0-1.1-2.69-2-6-2C4.68,0,2,0.9,2,2C2,3.1,4.68,4,8,4z
+			 M2,3.52V8c0,1.1,2.69,2,6,2c3.31,0,6-0.9,6-2V3.52C12.78,4.4,10.56,5,8,5S3.22,4.4,2,3.52z M2,9.52V14c0,1.1,2.69,2,6,2
+			c3.31,0,6-0.9,6-2V9.52C12.78,10.4,10.56,11,8,11S3.22,10.4,2,9.52z"
+        />{" "}
+      </g>
+    </svg>
+  );
+};
+
+export const IconTool = ({ iconSize, styles }: IconProps) => {
+  return (
+    <svg
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      className={[getIconSizeClassName(iconSize), styles].join(" ")}
+    >
+      <title>Tool</title>
+      <g>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M15.83,3.7l-3.06,3.05L9.93,6.05L9.23,3.22l3.06-3.05
+			c-1.67-0.44-3.52-0.02-4.83,1.29C6,2.91,5.63,5.03,6.34,6.82l-5.76,5.76C0.22,12.94,0,13.44,0,13.99c0,1.1,0.9,2,2,2
+			c0.55,0,1.05-0.22,1.41-0.59v0l5.77-5.77c1.79,0.69,3.91,0.33,5.35-1.12C15.85,7.21,16.27,5.36,15.83,3.7z"
+        />
+      </g>
+    </svg>
+  );
+};
