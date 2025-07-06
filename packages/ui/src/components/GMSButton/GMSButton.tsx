@@ -86,6 +86,7 @@ export const GMSButton = ({
   icon,
   style,
   cssStyles,
+  onClick,
   disabled = false,
   ...props
 }: ButtonProps) => {
@@ -96,6 +97,7 @@ export const GMSButton = ({
   return (
     <button
       type="button"
+      onClick={onClick}
       className={[
         "btn",
         btnSize,

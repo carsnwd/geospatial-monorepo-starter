@@ -1,4 +1,5 @@
-import { GMSButton, GMSSearchBar, IconAddLayer, IconFilter } from "ui";
+import { GMSButton, GMSSearchBar, IconFilter } from "ui";
+import AddMapLayerModal from "./helpers/AddMapLayerModal";
 
 export default function MapLayersMenu() {
   return (
@@ -6,7 +7,7 @@ export default function MapLayersMenu() {
       <GMSSearchBar placeholder="Search map layers..." />
       <div className="flex flex-row-reverse gap-2 mt-4 mb-4">
         <GMSButton label="Filter" style="soft" icon={IconFilter} />
-        <GMSButton label="Add Layer" style="soft" icon={IconAddLayer} />
+        <AddMapLayerModal />
       </div>
     </div>
   );
