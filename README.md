@@ -21,6 +21,7 @@ The map-library is a seperate package that uses a facade design pattern for the 
 - Vite as a front-end building tool
 - MapLibre as a geospatial library
 - Biome for linting/formatting
+- Neverthrow for better error handling in TypeScript
 - TailwindCSS + DaisyUI for styling and components
 - RxJs for async data handling and real-time data handling in particular
 
