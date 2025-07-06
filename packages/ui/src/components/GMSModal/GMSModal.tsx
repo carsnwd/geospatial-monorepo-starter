@@ -1,4 +1,5 @@
 import { GMSButton } from "../GMSButton";
+import { useCloseOnEscape } from "./hooks/useCloseOnEscape";
 
 type ModalSizes =
   | "xsmall"
@@ -29,9 +30,8 @@ interface GMSModalProps {
   id: string;
   children: React.ReactNode;
   isOpen: boolean;
-  confirmBtnConfig?: GMSModalConfirmBtnConfig;
-  cancelBtnConfig?: GMSModalCancelBtnConfig;
-  showCloseBtn?: boolean;
+  confirmBtnConfig: GMSModalConfirmBtnConfig;
+  cancelBtnConfig: GMSModalCancelBtnConfig;
   modalSize: ModalSizes;
 }
 
@@ -63,7 +63,7 @@ const modalSizeToClassMap: Map<ModalSizes, string> = new Map([
   ["xsmall", "max-w-xs"],
   ["small", "max-w-lg"],
   ["medium", "max-w-md"],
-  ["large", "max-w-lg"],
+  ["large", "max-w-xl"],
   ["xlarge", "max-w-xl"],
   ["2xlarge", "max-w-2xl"],
   ["3xlarge", "max-w-3xl"],
@@ -82,7 +82,10 @@ export const GMSModal = ({
   isOpen,
   modalSize = "medium",
 }: GMSModalProps) => {
+  useCloseOnEscape(cancelBtnConfig.cancelCallback || (() => {}));
+
   if (!isOpen) return null;
+
   return (
     <dialog id={id} className="modal" open={isOpen}>
       <div
