@@ -2,6 +2,8 @@
 
 A TypeScript monorepo starter for creating a client-side (SPA) geospatial application
 
+Currently a work in progress!
+
 # Why?
 
 The purpose is to implement a starter for an architecture concept I've had for a geospatial web application. Having years of experience with them, I have some concepts on good patterns and things to avoid in regards to it.
