@@ -6,8 +6,11 @@ import { MapLayersManager } from "../map-layers-manager/MapLayersManager";
 const DEFAULT_STYLE = "https://demotiles.maplibre.org/style.json";
 
 export class MapInstance {
+  // this should never be exposed publicly. Expose a service or interface instead to it.
+  // nothing outside of the map-library should have access to maplibre-gl directly.
   private map: MapLibreMap;
-  private mapLayersManager: MapLayersManager;
+
+  public mapLayersManager: MapLayersManager;
 
   constructor(options: MapInstanceOptions) {
     const mapOptions = {

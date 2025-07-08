@@ -1,16 +1,27 @@
 import { Map as MapLibreMap } from "maplibre-gl";
 import { GeoJSONSourceFactory } from "./source-factories/GeoJSONSourceFactory";
-import { SourceValidationManager } from "./source-validation-manager/SourceValidationManager";
 import { err, ok, Result } from "neverthrow";
+import { MapLayerTypes } from "./types";
+import { SourceFactory } from "./source-factories/interface";
 
 export class SourceManager {
   private map: MapLibreMap;
   private geoJSONSourceFactory: GeoJSONSourceFactory;
-  private sourceValidationManager: SourceValidationManager; // Placeholder for source validation manager type
   constructor(map: MapLibreMap) {
     this.map = map;
     this.geoJSONSourceFactory = new GeoJSONSourceFactory();
-    this.sourceValidationManager = new SourceValidationManager();
+  }
+
+  private getSourceFactoryForType(
+    type: MapLayerTypes,
+  ): Result<SourceFactory, string> {
+    switch (type) {
+      case "geojson":
+        return ok(this.geoJSONSourceFactory);
+      // Add more source factories for other types as needed
+      default:
+        return err(`Unsupported source type: ${type}`);
+    }
   }
 
   /**
@@ -18,19 +29,22 @@ export class SourceManager {
    * @param sourceData - The GeoJSON data to be added as a source.
    * @returns The ID of the added source.
    */
-  addSource(sourceData: GeoJSON.FeatureCollection): Result<string, string> {
-    const validationResult =
-      this.sourceValidationManager.validateGeoJSONSource(sourceData);
-    if (validationResult.isErr()) {
-      return err(validationResult.error);
+  addSource(
+    type: MapLayerTypes,
+    sourceData: GeoJSON.FeatureCollection,
+  ): Result<string, string> {
+    const sourceFactory = this.getSourceFactoryForType(type);
+
+    if (sourceFactory.isErr()) {
+      return err(sourceFactory.error);
     }
 
-    const sourceId = `geojson-source-${crypto.randomUUID().slice(0, 16)}`;
-    // Logic to add a source to the map
-    this.map.addSource(
-      sourceId,
-      this.geoJSONSourceFactory.createSource(sourceData),
-    );
+    const sourceResult = sourceFactory.value.createSource(sourceData);
+    if (sourceResult.isErr()) {
+      return err(sourceResult.error);
+    }
+    const { sourceId, source } = sourceResult.value;
+    this.map.addSource(sourceId, source);
     return ok(sourceId);
   }
 

@@ -6,7 +6,7 @@ import { err, ok, Result } from "neverthrow";
 export class MapLayersManager {
   private map: MapLibreMap;
   private layerManager: any; // Placeholder for layer manager type
-  private sourceManager: SourceManager; // Placeholder for source manager type
+  private sourceManager: SourceManager;
 
   constructor(map: MapLibreMap) {
     this.map = map;
