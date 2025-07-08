@@ -98,6 +98,7 @@ export const GMSButton = ({
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}
       className={[
         "btn",
         btnSize,
