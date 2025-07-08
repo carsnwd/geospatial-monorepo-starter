@@ -44,6 +44,7 @@ describe("GMSButton", () => {
 
     const button = screen.getByRole("button", { name: /click me/i });
     expect(button).toBeDisabled();
+    expect(button).toHaveClass("btn-disabled");
 
     await user.click(button);
     expect(handleClick).not.toHaveBeenCalled();
