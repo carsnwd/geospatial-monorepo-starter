@@ -28,3 +28,8 @@ The map-library is a seperate package that uses a facade design pattern for the 
 In the future I'd like to explore more backend ideas, and having a backend server within this monorepo. For now though I'll be using a BaaS like AppWrite or Convex as a stand-in.
 
 I'd also like to show how something like Tauri can be used as a desktop application as well.
+
+# Credits
+
+- Used BHVR as a starting point to build from.
+- Used Palantir icons from their Blueprint component library.
