@@ -13,16 +13,18 @@ export class GeoJSONSourceFactory implements SourceFactory {
    * @param data - The GeoJSON data to be used as the source.
    * @returns A GeoJSON source specification.
    */
-  createSource(data: GeoJSON.FeatureCollection): SourceFactoryResult {
+  createSource(
+    data: GeoJSON.FeatureCollection,
+    id: string,
+  ): SourceFactoryResult {
     const validationResult =
       this.sourceValidationManager.validateGeoJSONSource(data);
     if (validationResult.isErr()) {
       return err(validationResult.error);
     }
 
-    const sourceId = `geojson-source-${crypto.randomUUID().slice(0, 16)}`;
     return ok({
-      sourceId,
+      sourceId: id,
       source: {
         type: "geojson" as const,
         data,

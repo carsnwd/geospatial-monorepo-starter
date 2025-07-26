@@ -8,5 +8,5 @@ export type SourceFactoryResult = Result<
 >;
 
 export interface SourceFactory {
-  createSource(data: MapDataTypes): SourceFactoryResult;
+  createSource(data: MapDataTypes, id: string): SourceFactoryResult;
 }

@@ -25,21 +25,23 @@ export class SourceManager {
   }
 
   /**
-   * Adds a GeoJSON source to the map.
-   * @param sourceData - The GeoJSON data to be added as a source.
+   * Adds a source to the map.
+   * @param sourceData - The data to be added as a source.
    * @returns The ID of the added source.
    */
-  addSource(
-    type: MapLayerTypes,
-    sourceData: GeoJSON.FeatureCollection,
-  ): Result<string, string> {
+  addSource(props: {
+    type: MapLayerTypes;
+    sourceData: GeoJSON.FeatureCollection;
+    id: string;
+  }): Result<string, string> {
+    const { type, sourceData, id } = props;
     const sourceFactory = this.getSourceFactoryForType(type);
 
     if (sourceFactory.isErr()) {
       return err(sourceFactory.error);
     }
 
-    const sourceResult = sourceFactory.value.createSource(sourceData);
+    const sourceResult = sourceFactory.value.createSource(sourceData, id);
     if (sourceResult.isErr()) {
       return err(sourceResult.error);
     }

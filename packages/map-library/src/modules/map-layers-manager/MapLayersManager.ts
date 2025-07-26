@@ -14,8 +14,17 @@ export class MapLayersManager {
     this.sourceManager = new SourceManager(this.map); // Initialize with a proper source manager instance
   }
 
-  addMapLayer(type: MapLayerTypes, data: MapDataTypes): Result<void, string> {
-    const addSourceResult = this.sourceManager.addSource(data);
+  addMapLayer(props: {
+    type: MapLayerTypes;
+    data: MapDataTypes;
+    id?: string;
+  }): Result<void, string> {
+    const { type, data, id = crypto.randomUUID() } = props;
+    const addSourceResult = this.sourceManager.addSource({
+      type,
+      sourceData: data,
+      id,
+    });
     if (addSourceResult.isErr()) {
       return err(addSourceResult.error);
     }

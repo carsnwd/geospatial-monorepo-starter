@@ -16,11 +16,11 @@ The map-library is a seperate package that uses a facade design pattern for the 
 
 # Features / Tech
 
-- Bun as a JavaScript/TypeScript runtime, and also Bun's workspaces for a monorepo setup
-- React as a front-end UI library
+- Bun as a JavaScript/TypeScript runtime, and also Bun's workspaces for a monorepo setup.
+- React as a front-end UI library, but you could really apply the same ideas with any (Vue, Solid, Svelte, etc)
 - Vite as a front-end building tool
-- MapLibre as a geospatial library
-- Biome for linting/formatting
+- MapLibre as a geospatial library, but you could really apply the same ideas with any (Mapbox, ArcGIS, Leaflet, OpenLayers, etc)
+- Biome for linting/formatting.
 - Neverthrow for better error handling in TypeScript
 - TailwindCSS + DaisyUI for styling and components
 - RxJs for async data handling and real-time data handling in particular
