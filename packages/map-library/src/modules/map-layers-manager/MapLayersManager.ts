@@ -1,6 +1,10 @@
 import { Map as MapLibreMap } from "maplibre-gl";
 import { SourceManager } from "./source-manager/SourceManager";
-import { MapDataTypes, MapLayerTypes } from "./source-manager/types";
+import {
+  MapDataTypes,
+  MapLayerStyle,
+  MapLayerTypes,
+} from "./source-manager/types";
 import { err, ok, Result } from "neverthrow";
 
 export class MapLayersManager {
@@ -17,9 +21,10 @@ export class MapLayersManager {
   addMapLayer(props: {
     type: MapLayerTypes;
     data: MapDataTypes;
+    style: MapLayerStyle;
     id?: string;
   }): Result<void, string> {
-    const { type, data, id = crypto.randomUUID() } = props;
+    const { type, data, id = crypto.randomUUID(), style } = props;
     const addSourceResult = this.sourceManager.addSource({
       type,
       sourceData: data,
@@ -29,7 +34,6 @@ export class MapLayersManager {
       return err(addSourceResult.error);
     }
     return ok();
-    // parse styling info
     // add layer info
     // store layer info and source info with a map layer id and return the map layer id
   }
