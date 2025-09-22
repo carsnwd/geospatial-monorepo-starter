@@ -1,12 +1,12 @@
-import { SourceValidationManager } from "../source-validation-manager/SourceValidationManager";
+import { SourceValidationManager } from "../../source-validation-manager/SourceValidationManager";
 import { err, ok } from "neverthrow";
-import { SourceFactory, SourceFactoryResult } from "./interface";
+import { SourceFactory, SourceFactoryResult } from "../interface";
 
 export class GeoJSONSourceFactory implements SourceFactory {
   private sourceValidationManager: SourceValidationManager;
 
-  constructor() {
-    this.sourceValidationManager = new SourceValidationManager();
+  constructor(sourceValidationManager?: SourceValidationManager) {
+    this.sourceValidationManager = sourceValidationManager || new SourceValidationManager();
   }
   /**
    * Creates a GeoJSON source specification for MapLibre GL.

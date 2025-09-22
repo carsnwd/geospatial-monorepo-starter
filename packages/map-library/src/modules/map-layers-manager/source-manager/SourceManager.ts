@@ -1,5 +1,5 @@
 import { Map as MapLibreMap } from "maplibre-gl";
-import { GeoJSONSourceFactory } from "./source-factories/GeoJSONSourceFactory";
+import { GeoJSONSourceFactory } from "./source-factories/GeoJSONSourceFactory/GeoJSONSourceFactory";
 import { err, ok, Result } from "neverthrow";
 import { MapLayerTypes } from "./types";
 import { SourceFactory } from "./source-factories/interface";
@@ -7,9 +7,9 @@ import { SourceFactory } from "./source-factories/interface";
 export class SourceManager {
   private map: MapLibreMap;
   private geoJSONSourceFactory: GeoJSONSourceFactory;
-  constructor(map: MapLibreMap) {
+  constructor(map: MapLibreMap, geoJSONSourceFactory?: GeoJSONSourceFactory) {
     this.map = map;
-    this.geoJSONSourceFactory = new GeoJSONSourceFactory();
+    this.geoJSONSourceFactory = geoJSONSourceFactory || new GeoJSONSourceFactory();
   }
 
   private getSourceFactoryForType(
